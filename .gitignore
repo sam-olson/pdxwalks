@@ -1,0 +1,5 @@
+**/__pycache__/
+config_files/last.json
+output/
+.DS_Store
+*.swp

@@ -1,0 +1,35 @@
+{
+    "gpx_files": [],
+    "bg_img": "",
+    "fg_img": "",
+    "top_left": [
+        45.6065,
+        -122.8138
+    ],
+    "bot_right": [
+        45.4535,
+        -122.5462
+    ],
+    "anim_type": "Snake Discover",
+    "zoom_buff": 500,
+    "disc_radius": 30,
+    "mark_col": "blue",
+    "ppf": 2,
+    "dwell_frames": 50,
+    "track_elev_cb": 0,
+    "track_dist_cb": 0,
+    "elev_y_span": 50,
+    "elev_x_buff": 0.05,
+    "elev_y_buff": 0.9,
+    "elev_track_rad": "1",
+    "elev_track_col": "green",
+    "elev_bg_col": "black",
+    "elev_disp_rout": 1,
+    "dist_x_buff": 0.05,
+    "dist_y_buff": 0.9,
+    "disp_pics": [],
+    "frame_rate": "30",
+    "final_height": "500",
+    "save_folder": "./output",
+    "ffmpeg_command": "ffmpeg -i <file> -vcodec libx264 -pix_fmt yuv420p -crf 30 <out_file>"
+}
