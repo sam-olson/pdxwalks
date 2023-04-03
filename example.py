@@ -10,10 +10,10 @@ TOP_LEFT = (45.6065, -122.8138)
 BOT_RIGHT = (45.4535, -122.5462)
 
 # load the foreground image
-FOREGROUND_IMG = cv2.imread("./source_maps/nbhd_street_test_walk.png")
+FOREGROUND_IMG = cv2.imread("./source_maps/portland_nbhd_sourcemap.png")
 
 # load the background image
-BACKGROUND_IMG = cv2.imread("./source_maps/full_image.png")
+BACKGROUND_IMG = cv2.imread("./source_maps/portland_full_image.png")
 
 # create the WalkMap object
 WMAP = WalkMap(FOREGROUND_IMG, TOP_LEFT, BOT_RIGHT)

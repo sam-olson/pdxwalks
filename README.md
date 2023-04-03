@@ -23,6 +23,9 @@ Or on a Windows system:
 py -m pip install -r requirements.txt
 ```
 
+## Downloading the example maps
+The full size map of Portland used in the example program is just under 100 MB, which is an impractical size to host on Github. However it is [available on Dropbox](https://www.dropbox.com/sh/iz3gre60gbrs1xc/AAAei03sb0_nQAm3_5ImBwYya?dl=0), in addition to a map of Portland containing only streets and neighborhood boundaries, which will serve as the top layer of the resulting video output. Download these two images and place them in the `source_maps` directory.
+
 ## Running the example program
 `pdxwalks` comes with an example program (`example.py`) that demonstrates how to use some of the functions included in the package. To run this example, navigate to the directory where you donwloaded this repository and run the following command (on a Unix-based system):
 ```bash
@@ -40,7 +43,11 @@ This program will plot one of the example routes and save the animation to the c
 
 The GUI makes it straightforward to enter parameters that customize the final animation to your liking. It also provides convenient ways to assign pathing for saving/loading files.
 
+![gui](https://github.com/sam-olson/pdxwalks/blob/master/assets/gui_layout.png)
+
 The green area at the top of the GUI in the above image is a status bar that provides feedback to the user. When the value of an input is of the incorrect type or out of the range of acceptable values, the status bar will turn red and provide detail of what the user must fix to successfully create an animation.
+
+![value_error](https://github.com/sam-olson/pdxwalks/blob/master/assets/value_error.png)
 
 Configuration files can be saved and loaded in JSON format so that the user does not have to constantly make changes to the input parameters every time they want to create an animation video in the same style. The most recent successfully submitted parameters are stored in `config_files/last.json`. This configuration file is automatically loaded every time the program begins. The default parameters can also be restored by loading `config_files/default.json`. The user can save the current parameters to a configuration file at any point by using the "Save config file" button.
 
@@ -53,6 +60,9 @@ If on a Windows based system:
 ```bash
 py app.py
 ```
+
+Below is an example frame of a "Snake Discover" animation, detailing the various parameters that can be adjusted:
+![snake](https://github.com/sam-olson/pdxwalks/blob/master/assets/snakediscover_output.png)
 
 ### Parameters
 ##### Load config file
@@ -68,10 +78,10 @@ A button that opens a file dialog and asks the user to select one or more GPX fi
 A button that opens a file dialog and asks the user to select an image (.jpg or .png) that represents the image being "discovered" by your walk/run/bike ride. In most cases, this will be an image of a map. Included in this repository is a high-resolution map of Portland (`source_maps/full_image.png`) that can be used as an example. This map consists of many smaller map tiles stitched together, resulting in a final file size of just under 100 MB. The map tiles were downloaded from [Open Street Map](https://www.openstreetmap.org/#map=5/38.007/-95.844). The selected file name is displayed below the button.
 
 ##### Foreground Image
-A button that opens a file dialog and asks the user to select an image (.jpg or .png) that represents the currently exposed regions of the map. Typically this image will contain the results of previous animations (i.e., you start with the output saved from a previous run). At the beginning, this will typically be an image of black pixels in the same shape as the Background Image described above. An example of a starting image for Portland is located at `source_maps/nbhd_street_test_walk.png`. This image consists of outlines of all neighborhoods in white, as well as all streets colored by which sextant of the city they belong to (blue = North Portland, green = Northwest Portland, red = Northeast Portland, magenta = Southwest Portland, cyan = South Portland, and yellow = Southeast Portland). The streets and neighborhood boundaries help to determine areas that you have not been to yet when planning a route. The selected file name is displayed below the button.
+A button that opens a file dialog and asks the user to select an image (.jpg or .png) that represents the currently exposed regions of the map. Typically this image will contain the results of previous animations (i.e., you start with the output saved from a previous run). At the beginning, this will typically be an image of black pixels in the same shape as the Background Image described above. An example of a starting image for Portland is located at `source_maps/portland_nbhd_sourcemap.png`. This image consists of outlines of all neighborhoods in white, as well as all streets colored by which sextant of the city they belong to (blue = North Portland, green = Northwest Portland, red = Northeast Portland, magenta = Southwest Portland, cyan = South Portland, and yellow = Southeast Portland). The streets and neighborhood boundaries help to determine areas that you have not been to yet when planning a route. The selected file name is displayed below the button.
 
 ##### Top Left and Bot Right coord entries
-It is necessary to note the latitude and longitude of the top left and bottom right corners of the map on which you are plotting routes. Each GPS data point must be assigned an x and y index based on its relation to these two points and the size of the image. To find these points, it is usually necessary to go to Google Maps and double click as close as possible to the corners of your map. This will set a pin at that location and display the latitude and longitude. These points must be entered into their respective inputs in the format 'latitude,longitude'. For the background image located at `source_maps/full_image.png`, the top left and bottom right coordinates are `45.6065,-122.8138` and `45.4535,-122.5462` respectively.
+It is necessary to note the latitude and longitude of the top left and bottom right corners of the map on which you are plotting routes. Each GPS data point must be assigned an x and y index based on its relation to these two points and the size of the image. To find these points, it is usually necessary to go to Google Maps and double click as close as possible to the corners of your map. This will set a pin at that location and display the latitude and longitude. These points must be entered into their respective inputs in the format 'latitude,longitude'. For the background image located at `source_maps/portland_full_image.png`, the top left and bottom right coordinates are `45.6065,-122.8138` and `45.4535,-122.5462` respectively.
 
 ##### Animation Type
 This dropdown allows the user to select the type of animation to create. The default is "Snake Discover", which animates the path of your workout and displays your progress as if you are "discovering" regions on a video game map. There is currently only one other option available, "Simple Add", which adds your route to the map without creating an animation (useful for bulk-adding workouts).
